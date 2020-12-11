@@ -8,8 +8,9 @@ const Registration = ({navigation}) => {
     <View style={styles.container}>
       <Text>Registration</Text>
       <View style={styles.block}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Home')}>
-          <Text>Go to Home</Text>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('Welcome')}>
+          <Text>Go to Welcome</Text>
         </TouchableWithoutFeedback>
       </View>
     </View>

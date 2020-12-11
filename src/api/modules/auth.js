@@ -7,7 +7,7 @@ class AuthApi extends API {
   async login(data) {
     return this.r({
       method: 'POST',
-      url: SERVER,
+      url: `${SERVER}/api/login`,
       data,
     });
   }

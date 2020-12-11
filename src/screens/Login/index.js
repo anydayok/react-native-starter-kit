@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -13,80 +13,62 @@ import Input from '../../components/Input';
 
 import styles from './style';
 
-type PropsT = {
-  navigation: {
-    navigate: function,
-  },
-  values: {
-    email: string,
-    password: string,
-  },
-  errors: Object,
-  handleSubmit: Function,
-  handleChange: Function,
-  handleBlur: Function,
-  touched: Function,
-  loginCleanError: Function,
-  serverErrorMessage: string,
-};
-
-type StateT = {};
-
-class Login extends Component<PropsT, StateT> {
-  cleanError = () => {
-    this.props.loginCleanError();
+const Login = ({
+  navigation,
+  values,
+  errors,
+  handleSubmit,
+  handleChange,
+  handleBlur,
+  touched,
+  serverErrorMessage,
+  loginClean,
+}) => {
+  const [displayText, changeDisplayText] = useState('');
+  const cleanError = (name) => {
+    changeDisplayText(name);
+    loginClean();
   };
-
-  render() {
-    const {
-      values,
-      errors,
-      handleSubmit,
-      handleChange,
-      handleBlur,
-      touched,
-      serverErrorMessage,
-    } = this.props;
-
-    return (
-      <View style={styles.container}>
-        <Text>Login</Text>
-        <View style={styles.block}>
-          <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate('Home')}>
-            <Text>Go to Home</Text>
-          </TouchableWithoutFeedback>
-        </View>
-        <Input
-          value={values.email}
-          title={i18n.t('pages.login.emailTitle')}
-          placeholder={i18n.t('pages.login.emailPlaceholder')}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
-          error={errors.email}
-          touched={touched.email}
-          onFocus={this.cleanError}
-          secureTextEntry={false}
-        />
-        <Input
-          value={values.password}
-          title={i18n.t('pages.login.passwordTitle')}
-          placeholder={i18n.t('pages.login.passwordPlaceholder')}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
-          error={errors.password}
-          touched={touched.password}
-          onFocus={this.cleanError}
-          secureTextEntry
-        />
-        {serverErrorMessage && serverErrorMessage.length && (
-          <Text style={styles.error}>{serverErrorMessage}</Text>
-        )}
-        <Button handleSubmit={handleSubmit} text="Login" />
+  return (
+    <View style={styles.container}>
+      <Text>Login</Text>
+      <View style={styles.block}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('Welcome')}>
+          <Text>Go to Welcome</Text>
+        </TouchableWithoutFeedback>
       </View>
-    );
-  }
-}
+      <Input
+        value={values.email}
+        name="email"
+        title={i18n.t('pages.login.emailTitle')}
+        placeholder={i18n.t('pages.login.emailPlaceholder')}
+        onChangeText={handleChange('email')}
+        onBlur={handleBlur('email')}
+        error={displayText === 'email' ? null : errors.email}
+        touched={touched.email}
+        onFocus={cleanError}
+        secureTextEntry={false}
+      />
+      <Input
+        value={values.password}
+        name="password"
+        title={i18n.t('pages.login.passwordTitle')}
+        placeholder={i18n.t('pages.login.passwordPlaceholder')}
+        onChangeText={handleChange('password')}
+        onBlur={handleBlur('password')}
+        error={displayText === 'password' ? null : errors.password}
+        touched={touched.password}
+        onFocus={cleanError}
+        secureTextEntry
+      />
+      {serverErrorMessage && serverErrorMessage.length && (
+        <Text style={styles.error}>{serverErrorMessage}</Text>
+      )}
+      <Button handleSubmit={handleSubmit} text="Login" />
+    </View>
+  );
+};
 
 export default compose(
   connect(

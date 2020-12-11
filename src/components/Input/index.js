@@ -5,6 +5,7 @@ import styles from './style';
 
 const Input = ({
   value,
+  name,
   title,
   placeholder,
   onChangeText,
@@ -19,15 +20,17 @@ const Input = ({
       <Text style={styles.title}>{title}</Text>
       <TextInput
         style={styles.textInput}
+        name={name}
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}
         onBlur={onBlur}
         secureTextEntry={secureTextEntry}
-        onFocus={onFocus}
+        onFocus={() => onFocus(name)}
         underlineColorAndroid="transparent"
+        autoCorrect={false}
       />
-      {touched && error && <Text style={styles.error}>{error}</Text>}
+      <Text style={styles.error}>{touched && error && error}</Text>
     </View>
   );
 };

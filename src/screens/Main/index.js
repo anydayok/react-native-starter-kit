@@ -11,8 +11,6 @@ import Language from '../../components/Language';
 
 import styles from './style';
 
-const itemsMenu = ['Login', 'Registration', 'ResetPassword'];
-
 const Main = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
