@@ -11,4 +11,4 @@ export default StyleSheet.create({
   },
 });
 
-export const color = styles.colors.green;
+export const color = styles.colors.accentPrimary;

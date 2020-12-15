@@ -16,7 +16,7 @@ const Main = () => {
     <SafeAreaView style={styles.wrapper}>
       <ScrollView>
         <View style={styles.container}>
-          <Text>Main</Text>
+          <Text style={styles.h1}>Main</Text>
         </View>
       </ScrollView>
     </SafeAreaView>

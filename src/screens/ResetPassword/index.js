@@ -6,7 +6,7 @@ import styles from './style';
 const ResetPassword = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Reset password</Text>
+      <Text style={styles.h1}>Reset password</Text>
       <View style={styles.block}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('Welcome')}>

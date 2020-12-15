@@ -5,7 +5,7 @@ import styles from '../../constants/styles';
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: styles.colors.white,
+    backgroundColor: styles.colors.backgroundPrimary,
   },
   container: {
     alignItems: 'center',
@@ -13,5 +13,11 @@ export default StyleSheet.create({
   },
   block: {
     marginTop: 15,
+  },
+  h1: {
+    ...styles.texts.h1,
+  },
+  text: {
+    ...styles.texts.body1,
   },
 });

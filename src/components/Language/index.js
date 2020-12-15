@@ -13,14 +13,14 @@ const Language = ({i18n, t}) => {
 
   return (
     <View style={styles.container}>
-      <Text>{t('components.language.title')}</Text>
+      <Text style={styles.text}>{t('components.language.title')}</Text>
       <View style={styles.languages}>
         {Object.entries(i18n.store.data).map((lang, index) => {
           return (
             <TouchableWithoutFeedback
               onPress={() => changeLanguage(lang)}
               key={index}>
-              <Text>{lang[1].translation.name}</Text>
+              <Text style={styles.text}>{lang[1].translation.name}</Text>
             </TouchableWithoutFeedback>
           );
         })}

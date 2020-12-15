@@ -31,7 +31,7 @@ const Login = ({
   };
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
+      <Text style={styles.h1}>Login</Text>
       <View style={styles.block}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('Welcome')}>

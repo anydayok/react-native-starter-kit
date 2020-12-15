@@ -20,13 +20,13 @@ const Welcome = ({navigation}) => {
       <StatusBar />
       <ScrollView>
         <View style={styles.container}>
-          <Text>Welcome</Text>
+          <Text style={styles.h1}>Welcome</Text>
           {itemsMenu.map((menu, index) => {
             return (
               <View style={styles.block} key={index}>
                 <TouchableWithoutFeedback
                   onPress={() => navigation.navigate(menu)}>
-                  <Text>Go to {menu} screen</Text>
+                  <Text style={styles.text}>Go to {menu} screen</Text>
                 </TouchableWithoutFeedback>
               </View>
             );

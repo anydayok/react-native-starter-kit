@@ -14,4 +14,7 @@ export default StyleSheet.create({
     width: 100,
     marginTop: 10,
   },
+  text: {
+    ...styles.texts.body1,
+  },
 });

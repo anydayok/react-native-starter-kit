@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import styles from '../../constants/styles';
 
@@ -7,14 +7,17 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: styles.colors.white,
+    backgroundColor: styles.colors.backgroundPrimary,
+  },
+  h1: {
+    ...styles.texts.h1,
   },
   block: {
     marginTop: 15,
   },
   error: {
+    ...styles.texts.body1,
     marginTop: 30,
-    fontSize: styles.fonts.size.normal,
-    color: styles.colors.red,
+    color: styles.colors.negative,
   },
 });

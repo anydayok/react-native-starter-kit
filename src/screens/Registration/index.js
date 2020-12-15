@@ -6,7 +6,7 @@ import styles from './style';
 const Registration = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Registration</Text>
+      <Text style={styles.h1}>Registration</Text>
       <View style={styles.block}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('Welcome')}>

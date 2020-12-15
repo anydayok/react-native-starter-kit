@@ -8,19 +8,19 @@ export default StyleSheet.create({
     width: '90%',
   },
   title: {
-    fontSize: styles.fonts.size.normal,
+    ...styles.texts.body1,
   },
   textInput: {
     height: 50,
+    paddingLeft: 10,
     borderBottomWidth: 1,
-    borderColor: styles.colors.darkGray,
-    backgroundColor: styles.colors.white,
-    color: styles.colors.black,
-    fontSize: styles.fonts.size.normal,
+    borderColor: styles.colors.backgroundSecondary,
+    backgroundColor: styles.colors.backgroundTertiary,
+    ...styles.texts.body1,
   },
   error: {
     marginTop: 10,
-    fontSize: styles.fonts.size.normal,
-    color: styles.colors.red,
+    ...styles.texts.body1,
+    color: styles.colors.negavive,
   },
 });

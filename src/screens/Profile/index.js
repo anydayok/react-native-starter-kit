@@ -45,7 +45,7 @@ const Profile = ({
     <SafeAreaView style={styles.wrapper}>
       <ScrollView>
         <View style={styles.container}>
-          <Text>Profile</Text>
+          <Text style={styles.h1}>Profile</Text>
           <Text>Name: {userData.name}</Text>
           <TouchableOpacity onPress={logout}>
             <Text style={styles.logout}>Logout</Text>
