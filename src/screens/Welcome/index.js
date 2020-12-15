@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Language from '../../components/Language';
+import StatusBar from '../../components/StatusBar';
 
 import styles from './style';
 
@@ -16,6 +17,7 @@ const itemsMenu = ['Login', 'Registration', 'ResetPassword'];
 const Welcome = ({navigation}) => {
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar />
       <ScrollView>
         <View style={styles.container}>
           <Text>Welcome</Text>
