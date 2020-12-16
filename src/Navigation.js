@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import WelcomeScreen from './screens/Welcome';
 import MainScreen from './screens/Main';
@@ -11,6 +12,7 @@ import ProfileScreen from './screens/Profile';
 import LoginScreen from './screens/Login';
 import RegistrationScreen from './screens/Registration';
 import ResetPasswordScreen from './screens/ResetPassword';
+import {AUTH_TOKEN_KEY} from './constants/data';
 
 const HomeIcon = require('./assets/icons/home.png');
 const UserIcon = require('./assets/icons/user.png');
@@ -85,6 +87,20 @@ export function reset(screen) {
 }
 
 export default function Navigation() {
+  // const [token, getToken] = useState(null);
+  // useEffect(() => {
+  //   const checkTokenAsync = async () => {
+  //     let userToken;
+  //     try {
+  //       userToken = await AsyncStorage.getItem(AUTH_TOKEN_KEY);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     getToken(userToken);
+  //   };
+  //
+  //   checkTokenAsync();
+  // }, []);
   return (
     <NavigationContainer ref={navigationRef}>
       <AppNavigator />
