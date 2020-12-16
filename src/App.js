@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import {I18nextProvider} from 'react-i18next';
 import {Provider} from 'react-redux';
@@ -8,7 +7,7 @@ import i18n from './locales/i18next';
 import Navigation from './Navigation';
 import Network from './components/Network';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>

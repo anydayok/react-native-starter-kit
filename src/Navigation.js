@@ -14,8 +14,7 @@ import RegistrationScreen from './screens/Registration';
 import ResetPasswordScreen from './screens/ResetPassword';
 import {AUTH_TOKEN_KEY} from './constants/data';
 
-const HomeIcon = require('./assets/icons/home.png');
-const UserIcon = require('./assets/icons/user.png');
+import assets from './assets';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,7 +50,7 @@ function TabNavigator() {
           tabBarIcon: ({color}) => (
             <Image
               style={{...iconStyles.icons, tintColor: color}}
-              source={HomeIcon}
+              source={assets.icons.HOME_ICON}
               tintColor={color}
             />
           ),
@@ -64,7 +63,7 @@ function TabNavigator() {
           tabBarIcon: ({color}) => (
             <Image
               style={{...iconStyles.icons, tintColor: color}}
-              source={UserIcon}
+              source={assets.icons.USER_ICON}
               tintColor={color}
             />
           ),
