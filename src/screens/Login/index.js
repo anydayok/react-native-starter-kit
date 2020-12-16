@@ -8,8 +8,7 @@ import {withFormik} from 'formik';
 import i18n from '../../locales/i18next';
 import {schemaLogin} from '../../constants/schema';
 import {login, loginClean} from '../../store/redux/auth/login';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import {Button, Input} from '../../components';
 
 import styles from './style';
 

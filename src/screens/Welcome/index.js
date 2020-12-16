@@ -7,8 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import Language from '../../components/Language';
-import StatusBar from '../../components/StatusBar';
+import {Language, StatusBar} from '../../components';
 
 import styles from './style';
 

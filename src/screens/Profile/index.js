@@ -9,8 +9,7 @@ import {
 import {connect, shallowEqual, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Loader from '../../components/Loader';
-import Error from '../../components/Error';
+import {Loader, Error} from '../../components';
 import {getUserData} from '../../store/redux/user/get';
 import {logout} from '../../store/redux/auth/login';
 
