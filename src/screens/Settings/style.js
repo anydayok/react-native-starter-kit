@@ -8,16 +8,15 @@ export default StyleSheet.create({
     backgroundColor: styles.colors.backgroundSecondary,
   },
   container: {
+    flex: 1,
     alignItems: 'center',
     paddingTop: 50,
-  },
-  block: {
-    marginTop: 15,
   },
   h1: {
     ...styles.texts.h1,
   },
-  text: {
-    ...styles.texts.body1,
+
+  logout: {
+    marginTop: 20,
   },
 });

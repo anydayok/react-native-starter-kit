@@ -1,6 +1,12 @@
 import 'react-native-gesture-handler';
 import React, {useState, useEffect} from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -8,13 +14,14 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import WelcomeScreen from './screens/Welcome';
 import MainScreen from './screens/Main';
-import ProfileScreen from './screens/Profile';
+import SettingsScreen from './screens/Settings';
 import LoginScreen from './screens/Login';
 import RegistrationScreen from './screens/Registration';
 import ResetPasswordScreen from './screens/ResetPassword';
 import {AUTH_TOKEN_KEY} from './constants/data';
 
 import assets from './assets';
+import styles from './constants/styles';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,38 +42,62 @@ function AppNavigator() {
   );
 }
 
+const renderTab = (props, label, icon) => {
+  const selected = props.accessibilityState.selected;
+  return (
+    <TouchableOpacity
+      {...props}
+      style={
+        selected ? {...stylesNav.tab, ...stylesNav.activeTab} : stylesNav.tab
+      }>
+      <Image
+        style={{
+          ...stylesNav.icon,
+          tintColor: selected
+            ? styles.colors.bodyPrimary
+            : styles.colors.bodySecondary,
+        }}
+        source={icon}
+      />
+      <Text
+        style={{
+          ...stylesNav.label,
+          color: selected
+            ? styles.colors.bodyPrimary
+            : styles.colors.bodySecondary,
+        }}>
+        {label}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
 function TabNavigator() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        showLabel: false,
-        activeTintColor: '#000000',
-        inactiveTintColor: 'rgba(0,0,0,0.47)',
+        showLabel: true,
+        style: {
+          height: 100,
+          backgroundColor: styles.colors.backgroundSecondary,
+          borderTopColor: styles.colors.bodyPrimary,
+          borderTopWidth: 1,
+        },
       }}>
       <Tab.Screen
         name="Main"
         component={MainScreen}
         options={{
-          tabBarIcon: ({color}) => (
-            <Image
-              style={{...iconStyles.icons, tintColor: color}}
-              source={assets.icons.HOME_ICON}
-              tintColor={color}
-            />
-          ),
+          tabBarButton: (props) =>
+            renderTab(props, 'Main', assets.icons.HOME_ICON),
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          tabBarIcon: ({color}) => (
-            <Image
-              style={{...iconStyles.icons, tintColor: color}}
-              source={assets.icons.USER_ICON}
-              tintColor={color}
-            />
-          ),
+          tabBarButton: (props) =>
+            renderTab(props, 'Settings', assets.icons.SETTINGS_ICON),
         }}
       />
     </Tab.Navigator>
@@ -107,9 +138,23 @@ export default function Navigation() {
   );
 }
 
-const iconStyles = StyleSheet.create({
-  icons: {
-    width: 20,
-    height: 20,
+const stylesNav = StyleSheet.create({
+  tab: {
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  activeTab: {
+    borderTopColor: styles.colors.bodyPrimary,
+    borderTopWidth: 4,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+  },
+  label: {
+    ...styles.texts.body3,
+    marginTop: 8,
   },
 });

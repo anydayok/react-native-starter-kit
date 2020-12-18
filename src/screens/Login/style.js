@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: styles.colors.backgroundPrimary,
+    backgroundColor: styles.colors.backgroundSecondary,
   },
   h1: {
     ...styles.texts.h1,
