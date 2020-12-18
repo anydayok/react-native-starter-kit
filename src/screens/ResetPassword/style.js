@@ -15,4 +15,7 @@ export default StyleSheet.create({
   block: {
     marginTop: 15,
   },
+  back: {
+    ...styles.texts.body1,
+  },
 });

@@ -10,7 +10,7 @@ const ResetPassword = ({navigation}) => {
       <View style={styles.block}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate('Welcome')}>
-          <Text>Go to Welcome</Text>
+          <Text style={styles.back}>Go to Welcome</Text>
         </TouchableWithoutFeedback>
       </View>
     </View>
